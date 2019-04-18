@@ -8,6 +8,7 @@ namespace DemoAPI.Controllers
     [RoutePrefix("api/todo")]
     public class TodoController : ApiController
     {
+        //api/todo/getItems
         [HttpGet]
         [Route("getItems")]
         public async Task<IEnumerable<Item>> GetAllItemAsync()
@@ -16,6 +17,7 @@ namespace DemoAPI.Controllers
             return output;
         }
 
+        //api/todo/getItemById
         [HttpGet]
         [Route("getItemById")]
         public async Task<Item> GetItemByIdAsync(string id)
@@ -24,6 +26,7 @@ namespace DemoAPI.Controllers
             return output;
         }
 
+        //api/todo/createItem
         [HttpPost]
         [Route("createItem")]
         public async Task CreateItemAsync(Item item)
@@ -31,6 +34,7 @@ namespace DemoAPI.Controllers
             await TodoDBRepository<Item>.AddItemAsync(item);
         }
 
+        //api/todo/deleteItem
         [HttpDelete]
         [Route("deleteItem")]
         public async Task RemoveItemAsync(string id, string category)
@@ -38,6 +42,7 @@ namespace DemoAPI.Controllers
             await TodoDBRepository<Item>.RemoveItemAsync(id, category);
         }
 
+        //api/todo/updateItem
         [HttpPost]
         [Route("updateItem")]
         public async Task UpdateItemAsync(Item item)
